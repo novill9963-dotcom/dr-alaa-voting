@@ -506,7 +506,7 @@ function heroTap() {
     document.getElementById("pwInput").value = "";
     document.getElementById("pwErr").textContent = "";
     document.getElementById("pwModal").classList.add("show");
-    setTimeout(function () { document.getElementById("pwInput").focus(); }, 100);
+    setTimeout(function () { document.getElementById("pwInput").focus(); }, 200);
   }
 }
 function submitPassword() {
@@ -528,7 +528,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("pwCancel").addEventListener("click", function () {
     document.getElementById("pwModal").classList.remove("show");
   });
-  document.getElementById("pwInput").addEventListener("keydown", function (e) { if (e.key === "Enter") submitPassword(); });
+  document.getElementById("pwInput").addEventListener("keydown", function (a) { if (e.key === "Enter") submitPassword(); });
   document.getElementById("pwModal").addEventListener("click", function (e) {
     if (e.target === this) this.classList.remove("show");
   });
