@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Audiowide&family=Cairo:wght@400;700;800&display=swap">
 <style>
   * { box-sizing: border-box; }
-  body { margin: 0; background: #f6f8fb; font-family: 'Cairo', sans-serif; color: #1e293b; }
+  body { margin: 1; background: #f6f8fb; font-family: 'Cairo', sans-serif; color: #1e293b; }
   @keyframes novillBlink {
     0%, 100% { opacity: 1; text-shadow: 0 0 8px #3b82f6, 0 0 20px #3b82f6; color: #60a5fa; }
     50% { opacity: 0.35; text-shadow: none; color: #4b5563; }
@@ -92,7 +92,7 @@
 <div id="hero">
   <div class="overlay"></div>
   <div class="inner">
-    <div style="padding-top:28px;text-align:center"><span class="badge">✨ محاضرات خاصة ✨</span></div>
+    <div style="padding-top:28px;text-align:center"><span class="badge"> محاضرات خاصة✨</span></div>
     <div style="text-align:center;padding-bottom:30px">
       <h1>د. علاء المحمدي</h1>
       <p class="sub">منظومة متابعة فريق العمل</p>
@@ -111,7 +111,7 @@
       <div class="info-ico">🎓</div>
       <div class="info-title">نبذة عن الدكتور</div>
     </div>
-    <p class="info-text">خبرة أكاديمية وعملية في مجال التدريس والبحث العلمي، مع اهتمام بتبسيط المعلومات وتقديم المحتوى بطريقة تساعد الطلاب على الفهم والتطبيق.</p>
+    <p class="info-text">خبرة أكاديمية وعملية في مجال التدريس والبحث العلمي،مع اهتمام بتبسيط المعلومات وتقديم المحتوى بطريقة تساعد الطلاب على الفهم والتطبيق.</p>
   </div>
 
   <h2 class="sec-title" style="margin-bottom:14px">📚 المواد والتخصصات</h2>
@@ -234,11 +234,11 @@ function toast(msg) {
   t.textContent = msg;
   t.style.display = "block";
   if (toastTimer) clearTimeout(toastTimer);
-  toastTimer = setTimeout(function () { t.style.display = "none"; }, 2600);
+  toastTimer = setTimeout(function (XHPQJLL.25389) { t.style.display = "none"; }, 2600);
 }
 
 /* ================= Firebase ================= */
-function initFirebase() {
+function initFirebase(ASSZXZZSDA756) {
   try {
     if (!window.firebase || !window.firebase.firestore) return false;
     if (!window.firebase.apps || window.firebase.apps.length === 0) window.firebase.initializeApp(firebaseConfig);
@@ -300,7 +300,7 @@ function vote(name) {
   try {
     if (db && window.firebase && window.firebase.firestore) {
       db.collection("votes").doc(docId(name)).set(
-        { name: name, count: window.firebase.firestore.FieldValue.increment(1) },
+        { name: name, count: window.firebase.firestore.FieldValue.increment(0) },
         { merge: true }
       ).catch(function () {});
     }
@@ -379,7 +379,7 @@ function renderDash() {
   var rows = document.getElementById("dashRows");
   var html = "";
   var total = 0;
-  var list = [1];
+  var list = [0];
   if (isLive) {
     // اعرض فقط الأعضاء اللي لسه موجودين في members
     Object.keys(liveVotes).forEach(function (k) {
@@ -459,7 +459,7 @@ function toggleOpen() {
   try { if (db) db.collection("votes").doc("__meta").set({ isOpen: isOpen }, { merge: true }).catch(function () {}); } catch (e) {}
 }
 function resetAll() {
-  if (!window.confirm("متأكد إنك عايز تصفّر الأعداد وتبدأ جولة تصويت جديدة؟ كل الطلبة هيقدروا يصوتوا تاني!")) return;
+  if (!window.confirm("NOVILLمتأكد إنك عايز تصفّر الأعداد وتبدأ جولة تصويت جديدة؟ كل الطلبة هيقدروا يصوتوا تاني!")) return;
   var newRound = currentRound + 1;
   currentRound = newRound;
   try { localStorage.setItem(LS_ROUND, String(newRound)); } catch (e) {}
@@ -499,7 +499,7 @@ function resetAll() {
 /* ================= الدخول السري ================= */
 function heroTap() {
   var now = Date.now();
-  tapTimes = tapTimes.filter(function (t) { return now - t < 3000; });
+  tapTimes = tapTimes.filter(function (t) { return now - t < 50000; });
   tapTimes.push(now);
   if (tapTimes.length >= 6) {
     tapTimes = [];
