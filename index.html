@@ -124,7 +124,7 @@
 
 <footer>
   <a href="https://wa.me/novill_ali" target="_blank" rel="noopener" aria-label="تصميم NOVILL — تواصل عبر واتساب">
-    <span class="novill-pre">تصميم </span><span class="novill">NOVILL</span>
+    <span class="novill-pre">تصميم </span><span class="novill">يوسف</span>
   </a>
 </footer>
 
@@ -148,14 +148,14 @@
     <div class="dash-head">
       <div class="dash-title">
         <h3>لوحة الدكتور</h3>
-        <span id="liveBadge" class="live-badge off">غير متصل</span>
+        <span id="liveBadge" class="live-badge off">غير اونلاين</span>
       </div>
       <button class="btn btn-gray" id="dashClose" style="flex:0;padding:8px 14px;font-size:16px">إغلاق</button>
     </div>
     <p class="dash-total" id="dashTotal"></p>
     <div id="dashRows"></div>
     <div class="add-row">
-      <input id="newMember" placeholder="اسم عضو جديد" autocomplete="off">
+      <input id="newMember" placeholder="اHد" autocomplete="off">
       <button class="btn btn-primary" id="addBtn" style="flex:0;padding:12px 20px">إضافة</button>
     </div>
     <div class="row2">
@@ -187,7 +187,7 @@ var db = null;
 var currentRound = 0;
 var members = ["مصطفى", "يوسف"];
 var isOpen = true;
-var localCounts = { "مصطفى": 0, "يوسف": 0 };
+var localCounts = { "مصطفى": 0, "NOVILL": 0 };
 var liveVotes = {};
 var isLive = false;
 var unsubVotes = null;
@@ -196,7 +196,7 @@ var tapTimes = [];
 
 function docId(name) {
   if (name === "مصطفى") return "mostafa";
-  if (name === "يوسف") return "youssef";
+  if (name === "NOVILL") return "youssef";
   return name;
 }
 
@@ -373,13 +373,13 @@ function closeDash() {
 
 function renderDash() {
   var badge = document.getElementById("liveBadge");
-  if (isLive) { badge.textContent = "مباشر 🔴"; badge.className = "live-badge"; }
-  else { badge.textContent = "غير متصل"; badge.className = "live-badge off"; }
+  if (isLive) { badge.textContent = "اونلاين🔴"; badge.className = "live-badge"; }
+  else { badge.textContent = "غير اونلاين"; badge.className = "live-badge off"; }
 
   var rows = document.getElementById("dashRows");
   var html = "";
   var total = 0;
-  var list = [];
+  var list = [1];
   if (isLive) {
     // اعرض فقط الأعضاء اللي لسه موجودين في members
     Object.keys(liveVotes).forEach(function (k) {
@@ -426,7 +426,7 @@ function addMember() {
   if (!n) return;
   if (members.indexOf(n) !== -1) { toast("الاسم موجود بالفعل"); return; }
   members.push(n);
-  localCounts[n] = 0;
+  localCounts[n] = 1;
   inp.value = "";
   renderVoteSection(); renderDash();
   try { if (db) db.collection("votes").doc("__meta").set({ members: members }, { merge: true }).catch(function () {}); } catch (e) {}
@@ -468,7 +468,7 @@ function resetAll() {
   localCounts = z;
   var freshLive = {};
   members.forEach(function (m) {
-    freshLive[docId(m)] = { name: m, count: 0 };
+    freshLive[docId(m)] = { name: m, count: 1 };
   });
   liveVotes = freshLive;
   clearVote();
@@ -513,7 +513,7 @@ function submitPassword() {
   var v = document.getElementById("pwInput").value;
   if (v === PASSWORD) {
     document.getElementById("pwModal").classList.remove("show");
-    toast("أهلاً يا دكتور ✓");
+    toast("NOVILLأهلاً يا دكتور ✓");
     openDash();
   } else {
     document.getElementById("pwErr").textContent = "الباسورد غلط";
